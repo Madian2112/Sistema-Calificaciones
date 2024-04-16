@@ -7,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Sistema_Calificaciones.API.Extensions;
+using Sistema_Calificaciones.BusinessLogic.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +28,13 @@ namespace Sistema_Calificaciones.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Configurar la inyección de dependencias para DataAccess y BusinessLogic
+            services.DataAccess(Configuration.GetConnectionString("Sistema_Calificaciones"));
+            services.BusinessLogic();
+
+            // Configurar AutoMapper
+            services.AddAutoMapper(x => x.AddProfile<MappingProfileExtensions>(), AppDomain.CurrentDomain.GetAssemblies());
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
