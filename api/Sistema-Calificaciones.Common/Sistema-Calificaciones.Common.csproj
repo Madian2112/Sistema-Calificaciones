@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Sistema-Calificaciones.Entities\Sistema-Calificaciones.Entities.csproj" />
   </ItemGroup>
 

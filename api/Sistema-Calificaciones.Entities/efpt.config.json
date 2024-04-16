@@ -1,0 +1,101 @@
+﻿{
+   "CodeGenerationMode": 0,
+   "ContextClassName": "BdreportecalificacionesContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Entities",
+   "ProjectRootNamespace": "Sistema_Calificaciones.Entities",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 2,
+   "Tables": [
+      {
+         "Name": "[Acce].[tbRoles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Acce].[tbUsuarios]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Gene].[tbDepartamentos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Gene].[tbEstadosCiviles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Gene].[tbMunicipos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Gene].[tbPersonas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Repo].[Materia]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Repo].[tbAlumnos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Repo].[tbCalificacionPorAlumno]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Repo].[tbCursos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Repo].[tbMaestros]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Repo].[tbMaestrosPorCursos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Repo].[tbMatricula]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Repo].[tbPadres]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Repo].[tbPadresPorAlumno]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Repo].[tbReportes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Repo].[tbReportesPorMaestros]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "VJ7400.BdReportecalificaciones",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false
+}

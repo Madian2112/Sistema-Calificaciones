@@ -12,14 +12,14 @@ namespace Sistema_Calificaciones.BusinessLogic.Services
     {
         public static void DataAccess(this IServiceCollection service, string conn)
         {
-            //service.AddScoped<DepartamentoRepository>();
+            service.AddScoped<UsuarioRepository>();
 
 
-            //Sistemas_TurnosContext.BuildConnectionString(conn);
+            Sistema_CalificacionesContex.BuildConnectionString(conn);
         }
         public static void BusinessLogic(this IServiceCollection service)
         {
-            //service.AddScoped<AccesoServices>();
+            service.AddScoped<AccesoServices>();
 
         }
     }
