@@ -18,6 +18,9 @@ namespace Sistema_Calificaciones.DataAccess.Repository
         public static string Usua_Obtener = "[Acce].[sp_Usuarios_obtener]";
         public static string Usua_Eliminar = "[Acce].[sp_Usuarios_eliminar]";
         public static string Usua_Actualizar = "[Acce].[sp_Usuarios_editar]";
+        public static string Usua_Restablecer = "[Acce].[sp_Usuarios_restablecer]";
+
+
 
 
 
