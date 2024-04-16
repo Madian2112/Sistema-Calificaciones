@@ -107,5 +107,6 @@ namespace Sistema_Calificaciones.API.Controllers
             return Ok(list);
         }
 
+
     }
 }

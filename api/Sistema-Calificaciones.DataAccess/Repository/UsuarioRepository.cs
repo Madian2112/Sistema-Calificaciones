@@ -155,7 +155,7 @@ namespace Sistema_Calificaciones.DataAccess.Repository
 
         public RequestStatus Restablecer(int Usua_Id, string Usua_Clave, int usuario, DateTime fecha)
         {
-            string sql = ScriptsBaseDeDatos.Usua_Actualizar;
+            string sql = ScriptsBaseDeDatos.Usua_Restablecer;
 
             using (var db = new SqlConnection(Sistema_CalificacionesContex.ConnectionString))
             {
