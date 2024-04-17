@@ -1,0 +1,3 @@
+SQL Server address:	BdReportecalificaciones.mssql.somee.com
+Login name:	faviola12_SQLLogin_1
+contrase  12345678
