@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Sistema_Calificaciones.API.Extensions;
+using Sistema_Calificaciones.API.Services;
 using Sistema_Calificaciones.BusinessLogic.Services;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,10 @@ namespace Sistema_Calificaciones.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+
+            services.AddTransient<IMailService, MailService>();
+
             // Configurar la inyección de dependencias para DataAccess y BusinessLogic
             services.DataAccess(Configuration.GetConnectionString("Sistema_Calificaciones"));
             services.BusinessLogic();
