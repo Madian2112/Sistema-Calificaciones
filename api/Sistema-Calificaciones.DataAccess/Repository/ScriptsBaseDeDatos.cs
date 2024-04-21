@@ -12,7 +12,7 @@ namespace Sistema_Calificaciones.DataAccess.Repository
         #region Acceso
         #region Usuario
        
-        public static string Usua_Listar = "Acce.sp_Usuarios_listar";
+        public static string Usua_Listar = "[Acce].[sp_Usuarios_listar]";
         public static string Usua_Login = "[Acce].[sp_Usuarios_iniciosesion]";
         public static string Usua_Insertar = "[Acce].[sp_Usuarios_insertar]";
         public static string Usua_Obtener = "[Acce].[sp_Usuarios_obtener]";
