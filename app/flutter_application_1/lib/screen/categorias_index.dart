@@ -32,12 +32,6 @@ class _MyWidgetState extends State<MyWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Listado API"),
-        backgroundColor: Colors.blue,
-        centerTitle: true,
-        elevation: 0,
-      ),
       body: FutureBuilder<List<dynamic>>(
         future: _getListado,
         builder: (context, snapshot) {
@@ -49,8 +43,7 @@ class _MyWidgetState extends State<MyWidget> {
                 width: MediaQuery.of(context).size.width * 0.8, // Ancho del contenedor
                 margin: EdgeInsets.all(20),
                 padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(26, 78, 172, 196), // Fondo blanco crema para el contenedor
+                decoration: BoxDecoration( // Fondo blanco crema para el contenedor
                   borderRadius: BorderRadius.circular(10), // Bordes redondeados
                 ),
                 child: SingleChildScrollView(
@@ -150,13 +143,3 @@ class _DataSource extends DataTableSource {
   int get selectedRowCount => 0;
 }
 
-void main() {
-  runApp(MaterialApp(
-    title: 'Flutter Demo',
-    theme: ThemeData(
-      primarySwatch: Colors.blue,
-      scaffoldBackgroundColor: Colors.grey[200], // Fondo gris claro para el Scaffold
-    ),
-    home: MyWidget(),
-  ));
-}
