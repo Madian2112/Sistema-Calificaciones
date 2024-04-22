@@ -13,6 +13,7 @@ namespace Sistema_Calificaciones.BusinessLogic.Services
         public static void DataAccess(this IServiceCollection service, string conn)
         {
             service.AddScoped<UsuarioRepository>();
+            service.AddScoped<RolRepository>();
 
 
             Sistema_CalificacionesContex.BuildConnectionString(conn);

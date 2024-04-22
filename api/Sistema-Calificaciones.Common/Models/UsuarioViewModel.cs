@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,14 @@ namespace Sistema_Calificaciones.Common.Models
         public DateTime? Usua_FechaModificacion { get; set; }
         public bool? Usua_Estado { get; set; }
 
+        [NotMapped]
+        public string Role_Descripcion { get; set; }
+
+        [NotMapped]
+        public string usua_creac { get; set; }
+
+        [NotMapped]
+        public string usua_modi { get; set; }
 
     }
 }
