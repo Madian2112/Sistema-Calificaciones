@@ -11,7 +11,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Profile"),
+        title: const Text("Perfil"),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: 20),
@@ -20,17 +20,17 @@ class ProfileScreen extends StatelessWidget {
             const ProfilePic(),
             const SizedBox(height: 20),
             ProfileMenu(
-              text: "My Account",
+              text: "Mi cuenta",
               icon: "assets/icons/User Icon.svg",
               press: () => {},
             ),
             ProfileMenu(
-              text: "Notifications",
+              text: "Notificaciones",
               icon: "assets/icons/Bell.svg",
               press: () {},
             ),
             ProfileMenu(
-              text: "Settings",
+              text: "Ajustes",
               icon: "assets/icons/Settings.svg",
               press: () {},
             ),
@@ -40,7 +40,7 @@ class ProfileScreen extends StatelessWidget {
               press: () {},
             ),
             ProfileMenu(
-              text: "Log Out",
+              text: "Cerrar Sesion",
               icon: "assets/icons/Log out.svg",
               press: () {},
             ),

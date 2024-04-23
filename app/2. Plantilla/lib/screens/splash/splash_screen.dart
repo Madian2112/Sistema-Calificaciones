@@ -17,17 +17,17 @@ class _SplashScreenState extends State<SplashScreen> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
     {
-      "text": "Welcome to Tokoto, Let’s shop!",
-      "image": "assets/images/splash_1.png"
+      "text": "Nova School!",
+      "image": "assets/images/p4.jpg"
     },
     {
       "text":
-          "We help people conect with store \naround United State of America",
-      "image": "assets/images/splash_2.png"
+          "Comprometidos con el futuro de tu hijo",
+      "image": "assets/images/p1.jpg"
     },
     {
-      "text": "We show the easy way to shop. \nJust stay at home with us",
-      "image": "assets/images/splash_3.png"
+      "text": "",
+      "image": "assets/images/log2.png"
     },
   ];
   @override
@@ -83,7 +83,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         onPressed: () {
                           Navigator.pushNamed(context, SignInScreen.routeName);
                         },
-                        child: const Text("Continue"),
+                        child: const Text("Iniciar"),
                       ),
                       const Spacer(),
                     ],
