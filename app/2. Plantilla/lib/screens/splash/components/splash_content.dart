@@ -19,24 +19,32 @@ class _SplashContentState extends State<SplashContent> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
+          Padding(  padding: const EdgeInsets.all(16.0),),
+            Padding(  padding: const EdgeInsets.all(16.0),),
         const Spacer(),
         const Text(
-          "NOVA SCHOOL",
+          "Academia Nova",
           style: TextStyle(
             fontSize: 32,
             color: kPrimaryColor,
             fontWeight: FontWeight.bold,
           ),
+
+
+
+
+
+
         ),
         Text(
           widget.text!,
           textAlign: TextAlign.center,
         ),
-        const Spacer(flex: 2),
+        const Spacer(flex: 30),
         Image.asset(
           widget.image!,
           height: 265,
-          width: 235,
+          width: 435,
         ),
       ],
     );

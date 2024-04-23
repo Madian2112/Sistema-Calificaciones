@@ -18,11 +18,14 @@ class HomeScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 16),
           child: Column(
             children: [
-              HomeHeader(),
+              // HomeHeader(),
               DiscountBanner(),
-              Categories(),
-              SpecialOffers(),
+              // Categories(),
+              // SpecialOffers(),
               SizedBox(height: 20),
+              PopularProducts(),
+                  Padding(  padding: const EdgeInsets.all(16.0),),
+                     Padding(  padding: const EdgeInsets.all(16.0),),
               PopularProducts(),
               SizedBox(height: 20),
             ],

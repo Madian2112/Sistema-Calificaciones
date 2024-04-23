@@ -39,8 +39,13 @@ namespace Sistema_Calificaciones.API.Controllers
         [HttpGet("LoginHome")]
         public IActionResult Login(string Usuario, string Contra)
         {
-           
             var list = _accesoServices.Login(Usuario, Contra);
+            var lista = list.Data;
+
+            if (lista != null)
+            {
+                list.Data = 0;
+            }
 
             return Ok(list);
         }

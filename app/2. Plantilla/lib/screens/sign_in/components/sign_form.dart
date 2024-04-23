@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
 import '../../../components/custom_surfix_icon.dart';
 import '../../../components/form_error.dart';
@@ -34,7 +35,7 @@ class _SignFormState extends State<SignForm> {
   }
 
   Future<dynamic> Login() async{
-    final String url = "https://localhost:44348/API/Usuario/LoginHome?Usuario="+username.text+"&Contra="+contraname.text;
+    final String url = "http://www.reportecalificacionesalumno.somee.com/API/Usuario/LoginHome?Usuario="+username.text+"&Contra="+contraname.text;
     final result = await http.get(Uri.parse(url));
 
     if(result.statusCode == 200){
@@ -44,6 +45,11 @@ class _SignFormState extends State<SignForm> {
         if (json['data'] != null && json['data'].isNotEmpty) {
 
           final userData = json['data'][0];
+          /*final saber = json['data'];
+
+          if(saber == 0){
+                        Navigator.push(context, MaterialPageRoute(builder: (home) =>  SignInScreen()));
+          } */
 
             if (userData.containsKey('usua_EsAdmin')) {
               bool isAdmin = userData['usua_EsAdmin'];
@@ -60,16 +66,16 @@ class _SignFormState extends State<SignForm> {
             }
         } 
         else {
-          print("Error: No hay datos en la lista 'data'.");
+            Navigator.push(context, MaterialPageRoute(builder: (home) =>  SignInScreen()));
         }
       } 
 
     else {
-      print("Error: Código de respuesta no es 200.");
+            Navigator.push(context, MaterialPageRoute(builder: (home) =>  SignInScreen()));
     }
 
      /* final SharedPreferences sharedPreferences = await SharedPreferences.getInstance(); */
-      Navigator.push(context, MaterialPageRoute(builder: (home) => LoginSuccessScreen()));
+            Navigator.push(context, MaterialPageRoute(builder: (home) =>  LoginSuccessScreen()));
     }
 
     else{
@@ -91,6 +97,12 @@ class _SignFormState extends State<SignForm> {
       key: _formKey,
       child: Column(
         children: [
+
+          Image.asset(
+            "assets/images/lo3.jpg",
+
+            height: MediaQuery.of(context).size.height*0.3,
+          ),
           TextFormField(
             controller: username,
             onSaved: (newValue) => Usuario = newValue,

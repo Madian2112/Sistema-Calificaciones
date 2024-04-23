@@ -12,7 +12,7 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Inicio de sesion"),
+        title: const Text("Regresar"),
       ),
       body: SafeArea(
         child: SizedBox(
@@ -24,7 +24,7 @@ class SignInScreen extends StatelessWidget {
                 children: [
                   const SizedBox(height: 16),
                   const Text(
-                    "Bienvenido de Regreso",
+                    "",
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 24,

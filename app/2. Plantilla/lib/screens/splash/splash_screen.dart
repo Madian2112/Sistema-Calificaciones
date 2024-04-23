@@ -47,16 +47,18 @@ class _SplashScreenState extends State<SplashScreen> {
                     });
                   },
                   itemCount: splashData.length,
+                  
                   itemBuilder: (context, index) => SplashContent(
                     image: splashData[index]["image"],
                     text: splashData[index]['text'],
+                    
                   ),
                 ),
               ),
               Expanded(
                 flex: 2,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 90, vertical: 90),
                   child: Column(
                     children: <Widget>[
                       const Spacer(),

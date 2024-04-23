@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/screens/usuarios/usuarios_screen.dart';
+import 'package:shop_app/screens/favorite/favorite_screen.dart';
 
-class TablesName extends StatelessWidget {
-  const TablesName({
+
+class AlumnosName extends StatelessWidget {
+  const AlumnosName({
     Key? key,
   }) : super(key: key);
 
@@ -20,19 +22,19 @@ class TablesName extends StatelessWidget {
         ),
         SizedBox(height: 10), // Espacio entre el título y las cartas
         SpecialOfferCard(
-          image: "assets/images/users.png",
-          category: "Usuarios",
-          description: "Ingrese los usuarios en este apartado.",
+          image: "assets/images/alumnos.jpg",
+          category: "Dany Franco",
+          description: "Vea los datos de su hijo en este apartado",
           press: () {
-            Navigator.pushNamed(context, WidgetUsuario.routeName);
+            Navigator.pushNamed(context, DashboardScreen.routeName);
           },
         ),
         SpecialOfferCard(
-          image: "assets/images/reporte.jpg",
-          category: "Reportes",
-          description: "Ingrese los reportes del alumno en este apartado.",
+          image: "assets/images/alumnos.jpg",
+          category: "Jason Sanchez",
+          description: "Vea los datos de su hijo en este apartado.",
           press: () {
-            Navigator.pushNamed(context, WidgetUsuario.routeName);
+            Navigator.pushNamed(context, DashboardScreen.routeName);
           },
         ),
       ],

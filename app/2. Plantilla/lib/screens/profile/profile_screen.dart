@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'components/profile_menu.dart';
 import 'components/profile_pic.dart';
+import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   static String routeName = "/profile";
@@ -42,7 +43,9 @@ class ProfileScreen extends StatelessWidget {
             ProfileMenu(
               text: "Cerrar Sesion",
               icon: "assets/icons/Log out.svg",
-              press: () {},
+              press: () {
+            Navigator.pushNamed(context, SignInScreen.routeName);
+          },
             ),
           ],
         ),
