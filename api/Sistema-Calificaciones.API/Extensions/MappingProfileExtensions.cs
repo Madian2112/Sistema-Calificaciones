@@ -13,6 +13,12 @@ namespace Sistema_Calificaciones.API.Extensions
         public MappingProfileExtensions()
         {
             CreateMap<UsuarioViewModel, tbUsuarios>().ReverseMap();
+            CreateMap<CalificacionesAlumnoViewModel, tbCalificacionPorAlumno>().ReverseMap();
+            CreateMap<PadresporAlumnoViewModel, tbPadresPorAlumno>().ReverseMap();
+            CreateMap<ReportePorMaestroViewModel, tbReportesPorMaestros>().ReverseMap();
+
+
+
         }
     }
 }

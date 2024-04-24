@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Sistema_Calificaciones.DataAccess.Repository
 {
-    public class UsuarioRepository 
+    public class UsuarioRepository
     {
         public RequestStatus Delete(int? id)
         {
@@ -108,7 +108,7 @@ namespace Sistema_Calificaciones.DataAccess.Repository
             }
         }
 
-        public RequestStatus Update(tbUsuarios item) 
+        public RequestStatus Update(tbUsuarios item)
         {
             string sql = ScriptsBaseDeDatos.Usua_Actualizar;
 

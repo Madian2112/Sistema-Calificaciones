@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'components/profile_menu.dart';
 import 'components/profile_pic.dart';
 import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
@@ -43,10 +43,13 @@ class ProfileScreen extends StatelessWidget {
             ProfileMenu(
               text: "Cerrar Sesion",
               icon: "assets/icons/Log out.svg",
-              press: () {
+              press: () async{
+            final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+            sharedPreferences.remove('Numero');
+            sharedPreferences.remove('IdUsuario');
+            /*Get.to(SignInScreen());*/
             Navigator.pushNamed(context, SignInScreen.routeName);
-          },
-            ),
+          },),
           ],
         ),
       ),

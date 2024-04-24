@@ -15,6 +15,8 @@ import 'screens/sign_up/sign_up_screen.dart';
 import 'screens/splash/splash_screen.dart';
 import 'screens/usuarios/usuarios_screen.dart';
 import 'screens/favorite/favorite_screen.dart';
+import 'screens/alumnos/components/alumos_name.dart';
+
 // We use name route
 // All our routes will be available here
 final Map<String, WidgetBuilder> routes = {
@@ -29,8 +31,8 @@ final Map<String, WidgetBuilder> routes = {
   HomeScreen.routeName: (context) => const HomeScreen(),
   ProductsScreen.routeName: (context) => const ProductsScreen(),
   DetailsScreen.routeName: (context) => const DetailsScreen(),
-  DashboardScreen.routeName: (context) => const DashboardScreen(),
   WidgetUsuario.routeName: (context) => const WidgetUsuario(),
+  WidgetAlumnos.routeName: (context) => const WidgetAlumnos(),
   CartScreen.routeName: (context) => const CartScreen(),
   ProfileScreen.routeName: (context) => const ProfileScreen(),
 };

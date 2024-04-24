@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sistema_Calificaciones.Common.Models
 {
-   public class UsuarioViewModel
+    public class UsuarioViewModel
     {
 
         public int Usua_Id { get; set; }

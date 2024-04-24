@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
 import '../../../components/custom_surfix_icon.dart';
 import '../../../components/form_error.dart';
@@ -37,14 +36,31 @@ class _SignFormState extends State<SignForm> {
   Future<dynamic> Login() async{
     final String url = "http://www.reportecalificacionesalumno.somee.com/API/Usuario/LoginHome?Usuario="+username.text+"&Contra="+contraname.text;
     final result = await http.get(Uri.parse(url));
+    final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
+    final Map<String, dynamic> responseData = json.decode(result.body);
+    final List<dynamic> reportesData = responseData['data'];
+
+    if(reportesData.isEmpty){
+      print(reportesData);
+                Navigator.pushNamed(context, SignInScreen.routeName);
+    }
+
+    else{
 
     if(result.statusCode == 200){
       final json = jsonDecode(result.body);
+
+          print(json['data']);
+
       if (json['code'] == 200) {
 
         if (json['data'] != null && json['data'].isNotEmpty) {
 
           final userData = json['data'][0];
+            int userid = userData['usua_Id'];
+            sharedPreferences.setInt('IdUsuario', userid);
+            print(userid);
           /*final saber = json['data'];
 
           if(saber == 0){
@@ -56,11 +72,9 @@ class _SignFormState extends State<SignForm> {
               print(isAdmin);
                 if(isAdmin == true){
                   int numero = 1;
-                  final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
                   sharedPreferences.setInt('Numero', numero);
                 }
             } 
-            
             else {
               print("Error: 'usua_EsAdmin' no está presente en los datos del usuario.");
             }
@@ -77,10 +91,7 @@ class _SignFormState extends State<SignForm> {
      /* final SharedPreferences sharedPreferences = await SharedPreferences.getInstance(); */
             Navigator.push(context, MaterialPageRoute(builder: (home) =>  LoginSuccessScreen()));
     }
-
-    else{
-            Navigator.push(context, MaterialPageRoute(builder: (home) =>  SignInScreen()));
-    }
+    };
   }
 
   void removeError({String? error}) {

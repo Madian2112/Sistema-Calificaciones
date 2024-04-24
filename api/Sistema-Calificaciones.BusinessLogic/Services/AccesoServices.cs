@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sistema_Calificaciones.BusinessLogic.Services
-{ 
+{
     public class AccesoServices
     {
         private readonly UsuarioRepository _usuarioRepository;

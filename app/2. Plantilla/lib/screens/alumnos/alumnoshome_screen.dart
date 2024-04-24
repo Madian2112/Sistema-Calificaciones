@@ -17,7 +17,7 @@ class AlumnosScreen extends StatelessWidget {
             children: [
               DiscountBanner(),
               SizedBox(height: 20),
-              AlumnosName(),
+              WidgetAlumnos(),
               SizedBox(height: 20),
             ],
           ),

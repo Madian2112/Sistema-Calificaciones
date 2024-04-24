@@ -130,7 +130,7 @@ class _MyWidgetState extends State<WidgetUsuario> {
                     fontWeight: FontWeight.bold,
                   ),
                   dataRowColor: MaterialStateColor.resolveWith(
-                    (states) => const Color.fromARGB(255, 255, 255, 255)!,
+                    (states) => const Color.fromARGB(255, 255, 255, 255),
                   ),
                   columns: [
                     DataColumn(
@@ -230,6 +230,3 @@ class _MyWidgetState extends State<WidgetUsuario> {
     }
   }
 }
-
-
-
