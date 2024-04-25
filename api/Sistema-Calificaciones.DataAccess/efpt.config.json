@@ -74,12 +74,20 @@
          "ObjectType": 0
       },
       {
+         "Name": "[Repo].[tbParcial]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[Repo].[tbReportes]",
          "ObjectType": 0
       },
       {
          "Name": "[Repo].[tbReportesPorMaestros]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[Repo].[vw_NotasPorParcial]",
+         "ObjectType": 3
       }
    ],
    "UiHint": "VJ7400.BdReportecalificaciones",

@@ -23,6 +23,7 @@ namespace Sistema_Calificaciones.Entities.Entities
         public int? Maes_Modificacion { get; set; }
         public DateTime? Maes_FechaModificacion { get; set; }
         public bool? Maes_Estado { get; set; }
+        public string Maes_Correo { get; set; }
 
         public virtual tbUsuarios Maes_CreacionNavigation { get; set; }
         public virtual tbUsuarios Maes_ModificacionNavigation { get; set; }

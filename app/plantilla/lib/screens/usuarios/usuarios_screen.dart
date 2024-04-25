@@ -36,7 +36,9 @@ class MyWidget extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<MyWidget> {
-  String url = 'https://localhost:44348/API/Usuario/ListadoUsuarios';
+  // String url = 'https://localhost:44348/API/Usuario/ListadoUsuarios';
+    String url = 'http://www.reportecalificacionesalumno.somee.com/API/Usuario/ListadoUsuarios';
+
 
   late Future<List<dynamic>> _getListado;
   bool _isSortAsc = true;

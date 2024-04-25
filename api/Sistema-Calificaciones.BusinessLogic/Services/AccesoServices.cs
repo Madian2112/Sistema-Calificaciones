@@ -1,4 +1,5 @@
-﻿using Sistema_Calificaciones.DataAccess.Repository;
+﻿using Sistema_Calificaciones.Common.Models;
+using Sistema_Calificaciones.DataAccess.Repository;
 using Sistema_Calificaciones.Entities.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,34 +9,48 @@ using System.Threading.Tasks;
 
 namespace Sistema_Calificaciones.BusinessLogic.Services
 {
-
-
-  
     public class AccesoServices
     {
         private readonly UsuarioRepository _usuarioRepository;
+        private readonly RolRepository _rolRepository;
 
-        public AccesoServices(UsuarioRepository usuarioRepository)
+        public AccesoServices(UsuarioRepository usuarioRepository, RolRepository rolRepository)
         {
             _usuarioRepository = usuarioRepository;
+            _rolRepository = rolRepository;
         }
 
 
         #region Usuario
-        public ServiceResult ListUsuarios()
+        public IEnumerable<UsuarioViewModel> ListUsuarios()
         {
-            var result = new ServiceResult();
             try
             {
-                var lost = _usuarioRepository.List();
-                return result.Ok(lost);
+                var usuarios = _usuarioRepository.List();
+                return usuarios;
             }
             catch (Exception ex)
             {
-                return result.Error(ex.Message);
+                Console.WriteLine($"errorrr: {ex.Message}");
+
+                throw;
             }
         }
 
+        public IEnumerable<UsuarioViewModel> ListRoless()
+        {
+            try
+            {
+                var usuarios = _usuarioRepository.RolList();
+                return usuarios;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"errorrr: {ex.Message}");
+
+                throw;
+            }
+        }
 
         public ServiceResult Login(string Usuario, string Contra)
         {
@@ -76,10 +91,6 @@ namespace Sistema_Calificaciones.BusinessLogic.Services
         }
 
 
-
-
-
-
         public ServiceResult ListUsuar(int id)
         {
             var result = new ServiceResult();
@@ -97,12 +108,12 @@ namespace Sistema_Calificaciones.BusinessLogic.Services
 
 
 
-        public ServiceResult EliminarUsuarios(int id, int usuario, DateTime fecha)
+        public ServiceResult EliminarUsuarios(int usua_Id, int usuario, DateTime fecha)
         {
             var result = new ServiceResult();
             try
             {
-                var lost = _usuarioRepository.EliminarUsuarios(id, usuario, fecha);
+                var lost = _usuarioRepository.EliminarUsuarios(usua_Id, usuario, fecha);
                 if (lost.CodeStatus > 0)
                 {
                     return result.Ok(lost);
@@ -157,6 +168,22 @@ namespace Sistema_Calificaciones.BusinessLogic.Services
 
 
 
+        #endregion
+
+        #region Roles
+        public ServiceResult ListRoles()
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var lost = _rolRepository.List();
+                return result.Ok(lost);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
         #endregion
 
     }

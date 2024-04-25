@@ -29,11 +29,17 @@ namespace Sistema_Calificaciones.API.Controllers
             return Ok(list);
         }
 
+        [HttpGet("ListadoRoles")]
+        public IActionResult RolIndex()
+        {
+            var list = _accesoServices.ListRoless();
+            return Ok(list);
+        }
 
         [HttpGet("LoginHome")]
         public IActionResult Login(string Usuario, string Contra)
         {
-           
+
             var list = _accesoServices.Login(Usuario, Contra);
 
             return Ok(list);
@@ -58,7 +64,7 @@ namespace Sistema_Calificaciones.API.Controllers
             return Ok(list);
         }
 
-        [HttpGet("FillUsuarios/{id}")]
+        [HttpGet("FillUsuarios")]
 
         public IActionResult Llenar(int id)
         {
@@ -66,12 +72,6 @@ namespace Sistema_Calificaciones.API.Controllers
             var list = _accesoServices.ListUsuar(id);
             return Json(list);
         }
-
-
-
-
-
-
 
         [HttpPut("UpdateUsuarios")]
         public IActionResult Update(UsuarioViewModel item)
@@ -91,9 +91,11 @@ namespace Sistema_Calificaciones.API.Controllers
         }
 
         [HttpDelete("DeleteUsuarios")]
-        public IActionResult Delete(int id, int usuario, DateTime fecha)
+        public IActionResult Delete(int usua_Id)
         {
-            var list = _accesoServices.EliminarUsuarios(id, usuario, fecha);
+            int usuario = 1;
+            DateTime fecha = DateTime.Now;
+            var list = _accesoServices.EliminarUsuarios(usua_Id, usuario, fecha);
             return Ok(list);
         }
 

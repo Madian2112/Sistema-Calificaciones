@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Sistema-Calificaciones.Common\Sistema-Calificaciones.Common.csproj" />
     <ProjectReference Include="..\Sistema-Calificaciones.Entities\Sistema-Calificaciones.Entities.csproj" />
   </ItemGroup>
 

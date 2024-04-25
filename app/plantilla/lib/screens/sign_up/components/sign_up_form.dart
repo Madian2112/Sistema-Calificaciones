@@ -13,6 +13,8 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<SignUpForm> {
+    String url = 'http://www.reportecalificacionesalumno.somee.com/API/Usuario/ListadoUsuarios';
+
   final _formKey = GlobalKey<FormState>();
   String? email;
   String? password;
@@ -64,8 +66,8 @@ class _SignUpFormState extends State<SignUpForm> {
               return null;
             },
             decoration: const InputDecoration(
-              labelText: "Email",
-              hintText: "Enter your email",
+              labelText: "Usuario",
+              hintText: "Ingrese el Usuario",
               // If  you are using latest version of flutter then lable text and hint text shown like this
               // if you r using flutter less then 1.20.* then maybe this is not working properly
               floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -95,8 +97,8 @@ class _SignUpFormState extends State<SignUpForm> {
               return null;
             },
             decoration: const InputDecoration(
-              labelText: "Password",
-              hintText: "Enter your password",
+              labelText: "Contraseña",
+              hintText: "Ingrese su contraseña",
               // If  you are using latest version of flutter then lable text and hint text shown like this
               // if you r using flutter less then 1.20.* then maybe this is not working properly
               floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -144,7 +146,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 Navigator.pushNamed(context, CompleteProfileScreen.routeName);
               }
             },
-            child: const Text("Continue"),
+            child: const Text("Iniciar"),
           ),
         ],
       ),

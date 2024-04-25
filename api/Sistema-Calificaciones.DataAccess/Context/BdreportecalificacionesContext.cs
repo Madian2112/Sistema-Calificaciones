@@ -31,11 +31,13 @@ namespace Sistema_Calificaciones.DataAccess.Context
         public virtual DbSet<tbMunicipos> tbMunicipos { get; set; }
         public virtual DbSet<tbPadres> tbPadres { get; set; }
         public virtual DbSet<tbPadresPorAlumno> tbPadresPorAlumno { get; set; }
+        public virtual DbSet<tbParcial> tbParcial { get; set; }
         public virtual DbSet<tbPersonas> tbPersonas { get; set; }
         public virtual DbSet<tbReportes> tbReportes { get; set; }
         public virtual DbSet<tbReportesPorMaestros> tbReportesPorMaestros { get; set; }
         public virtual DbSet<tbRoles> tbRoles { get; set; }
         public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
+        public virtual DbSet<vw_NotasPorParcial> vw_NotasPorParcial { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -135,6 +137,10 @@ namespace Sistema_Calificaciones.DataAccess.Context
                     .WithMany(p => p.tbCalificacionPorAlumno)
                     .HasForeignKey(d => d.Maes_Id)
                     .HasConstraintName("FK_CalificacionPorAlumno_tbMestros_Maes_Id");
+
+                entity.HasOne(d => d.Parc)
+                    .WithMany(p => p.tbCalificacionPorAlumno)
+                    .HasForeignKey(d => d.Parc_Id);
             });
 
             modelBuilder.Entity<tbCursos>(entity =>
@@ -201,6 +207,8 @@ namespace Sistema_Calificaciones.DataAccess.Context
                     .HasName("PK__tbMaestr__BAB4A32DAC606579");
 
                 entity.ToTable("tbMaestros", "Repo");
+
+                entity.Property(e => e.Maes_Correo).IsUnicode(false);
 
                 entity.Property(e => e.Maes_Estado).HasDefaultValueSql("((1))");
 
@@ -328,6 +336,8 @@ namespace Sistema_Calificaciones.DataAccess.Context
 
                 entity.ToTable("tbPadres", "Repo");
 
+                entity.Property(e => e.Padr_Correo).IsUnicode(false);
+
                 entity.Property(e => e.Padr_Direccion).HasMaxLength(50);
 
                 entity.Property(e => e.Padr_Estado).HasDefaultValueSql("((1))");
@@ -349,7 +359,7 @@ namespace Sistema_Calificaciones.DataAccess.Context
                 entity.HasOne(d => d.Padr_UsuarioNavigation)
                     .WithMany(p => p.tbPadresPadr_UsuarioNavigation)
                     .HasForeignKey(d => d.Padr_Usuario)
-                    .HasConstraintName("FK_tbMaestros_Padr_Usuario");
+                    .HasConstraintName("FK_tbPadres_Padr_Usuario");
 
                 entity.HasOne(d => d.Pers)
                     .WithMany(p => p.tbPadres)
@@ -387,6 +397,23 @@ namespace Sistema_Calificaciones.DataAccess.Context
                 entity.HasOne(d => d.Padr)
                     .WithMany(p => p.tbPadresPorAlumno)
                     .HasForeignKey(d => d.Padr_Id);
+            });
+
+            modelBuilder.Entity<tbParcial>(entity =>
+            {
+                entity.HasKey(e => e.Parc_Id);
+
+                entity.ToTable("tbParcial", "Repo");
+
+                entity.Property(e => e.Parc_Id).ValueGeneratedNever();
+
+                entity.Property(e => e.Parc_Descripcion)
+                    .HasMaxLength(50)
+                    .IsFixedLength(true);
+
+                entity.Property(e => e.Parc_Fin).HasColumnType("date");
+
+                entity.Property(e => e.Parc_Inicio).HasColumnType("date");
             });
 
             modelBuilder.Entity<tbPersonas>(entity =>
@@ -473,6 +500,10 @@ namespace Sistema_Calificaciones.DataAccess.Context
 
                 entity.Property(e => e.Rema_FechaModificacion).HasColumnType("datetime");
 
+                entity.Property(e => e.Repo_Causa)
+                    .HasMaxLength(200)
+                    .IsFixedLength(true);
+
                 entity.HasOne(d => d.Alum)
                     .WithMany(p => p.tbReportesPorMaestros)
                     .HasForeignKey(d => d.Alum_Id)
@@ -527,6 +558,15 @@ namespace Sistema_Calificaciones.DataAccess.Context
 
                 entity.ToTable("tbUsuarios", "Acce");
 
+                entity.HasIndex(e => e.Usua_Usuario, "UQ_tbUsuarios_Usua_Usuario")
+                    .IsUnique();
+
+                entity.Property(e => e.Usua_Clave).IsUnicode(false);
+
+                entity.Property(e => e.Usua_Codigo).IsUnicode(false);
+
+                entity.Property(e => e.Usua_Email).IsUnicode(false);
+
                 entity.Property(e => e.Usua_Estado).HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.Usua_FechaCreacion).HasColumnType("datetime");
@@ -538,6 +578,23 @@ namespace Sistema_Calificaciones.DataAccess.Context
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.tbUsuarios)
                     .HasForeignKey(d => d.Role_Id);
+            });
+
+            modelBuilder.Entity<vw_NotasPorParcial>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("vw_NotasPorParcial", "Repo");
+
+                entity.Property(e => e.Alumno).HasMaxLength(101);
+
+                entity.Property(e => e.Materia).HasMaxLength(50);
+
+                entity.Property(e => e.Parcial1).HasColumnType("numeric(18, 0)");
+
+                entity.Property(e => e.Parcial2).HasColumnType("numeric(18, 0)");
+
+                entity.Property(e => e.Parcial3).HasColumnType("numeric(18, 0)");
             });
 
             OnModelCreatingPartial(modelBuilder);

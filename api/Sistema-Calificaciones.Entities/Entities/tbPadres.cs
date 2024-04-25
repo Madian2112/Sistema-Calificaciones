@@ -23,6 +23,7 @@ namespace Sistema_Calificaciones.Entities.Entities
         public int? Padr_Modificacion { get; set; }
         public DateTime? Padr_FechaModificacion { get; set; }
         public bool? Padr_Estado { get; set; }
+        public string Padr_Correo { get; set; }
 
         public virtual tbUsuarios Padr_CreacionNavigation { get; set; }
         public virtual tbUsuarios Padr_ModificacionNavigation { get; set; }

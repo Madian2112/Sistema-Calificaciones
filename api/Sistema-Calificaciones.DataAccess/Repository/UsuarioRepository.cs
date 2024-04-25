@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
+using Sistema_Calificaciones.Common.Models;
 using Sistema_Calificaciones.DataAccess.Context;
 using Sistema_Calificaciones.Entities.Entities;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Sistema_Calificaciones.DataAccess.Repository
 {
-    public class UsuarioRepository : IRepository<tbUsuarios>
+    public class UsuarioRepository
     {
         public RequestStatus Delete(int? id)
         {
@@ -55,7 +56,7 @@ namespace Sistema_Calificaciones.DataAccess.Repository
 
         }
 
-        public IEnumerable<tbUsuarios> List()
+        public IEnumerable<UsuarioViewModel> List()
         {
             string sql = ScriptsBaseDeDatos.Usua_Listar;
 
@@ -65,12 +66,33 @@ namespace Sistema_Calificaciones.DataAccess.Repository
             {
                 result = db.Query<tbUsuarios>(sql, commandType: CommandType.Text).ToList();
 
-                return result;
+                return result.Select(u => new UsuarioViewModel
+                {
+                    Usua_Id = u.Usua_Id,
+                    Usua_Usuario = u.Usua_Usuario,
+                    Role_Descripcion = u.Role_Descripcion,
+
+                });
             }
         }
+        public IEnumerable<UsuarioViewModel> RolList()
+        {
+            string sql = ScriptsBaseDeDatos.Role_Listar;
 
+            List<tbRoles> result = new List<tbRoles>();
 
+            using (var db = new SqlConnection(Sistema_CalificacionesContex.ConnectionString))
+            {
+                result = db.Query<tbRoles>(sql, commandType: CommandType.Text).ToList();
 
+                return result.Select(u => new UsuarioViewModel
+                {
+                    Role_Id = u.Role_Id,
+                    Role_Descripcion = u.Role_Descripcion,
+
+                });
+            }
+        }
 
         public IEnumerable<tbUsuarios> Login(string Usuario, string Contra)
         {
@@ -86,13 +108,7 @@ namespace Sistema_Calificaciones.DataAccess.Repository
             }
         }
 
-
-
-
-
-
-
-        public RequestStatus Update(tbUsuarios item) 
+        public RequestStatus Update(tbUsuarios item)
         {
             string sql = ScriptsBaseDeDatos.Usua_Actualizar;
 
@@ -113,8 +129,6 @@ namespace Sistema_Calificaciones.DataAccess.Repository
             }
         }
 
-
-
         public IEnumerable<tbUsuarios> List(int Usua_Id)
         {
             string sql = ScriptsBaseDeDatos.Usua_Obtener;
@@ -130,13 +144,13 @@ namespace Sistema_Calificaciones.DataAccess.Repository
         }
 
 
-        public RequestStatus EliminarUsuarios(int id, int usuario, DateTime fecha)
+        public RequestStatus EliminarUsuarios(int usua_Id, int usuario, DateTime fecha)
         {
             string sql = ScriptsBaseDeDatos.Usua_Eliminar;
             using (var db = new SqlConnection(Sistema_CalificacionesContex.ConnectionString))
             {
                 var parametro = new DynamicParameters();
-                parametro.Add("@Usua_Id", id);
+                parametro.Add("@Usua_Id", usua_Id);
                 parametro.Add("@Usua_Modificacion", usuario);
                 parametro.Add("@Usua_FechaModificacion", fecha);
 
