@@ -58,8 +58,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
               return null;
             },
             decoration: const InputDecoration(
-              labelText: "First Name",
-              hintText: "Enter your first name",
+              labelText: "Primer Nombre",
+              hintText: "",
               // If  you are using latest version of flutter then lable text and hint text shown like this
               // if you r using flutter less then 1.20.* then maybe this is not working properly
               floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -70,8 +70,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           TextFormField(
             onSaved: (newValue) => lastName = newValue,
             decoration: const InputDecoration(
-              labelText: "Last Name",
-              hintText: "Enter your last name",
+              labelText: "segundo nombre",
+              hintText: "",
               // If  you are using latest version of flutter then lable text and hint text shown like this
               // if you r using flutter less then 1.20.* then maybe this is not working properly
               floatingLabelBehavior: FloatingLabelBehavior.always,
