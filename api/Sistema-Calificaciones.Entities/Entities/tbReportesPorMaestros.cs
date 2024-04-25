@@ -41,6 +41,13 @@ namespace Sistema_Calificaciones.Entities.Entities
 
 
 
+        [NotMapped]
+        public string Maestro { get; set; }
+
+        [NotMapped]
+        public string sexoa { get; set; }
+
+
         public virtual tbAlumnos Alum { get; set; }
         public virtual tbMaestros Maes { get; set; }
         public virtual Materia Mate { get; set; }

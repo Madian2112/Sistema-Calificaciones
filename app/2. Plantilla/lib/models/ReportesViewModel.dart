@@ -1,4 +1,5 @@
 class ReportesViewModel {
+  int? rema_Id;
   int? alum_Id;
   String? alumno;
   String? repo_Descripcion;
@@ -6,6 +7,7 @@ class ReportesViewModel {
   String? mate_Descripcion;
 
   ReportesViewModel({
+    required this.rema_Id,
     required this.alum_Id,
     required this.alumno,
     required this.repo_Descripcion,
@@ -16,6 +18,7 @@ class ReportesViewModel {
 
   factory ReportesViewModel.fromJson(Map<String, dynamic> json) {
     return ReportesViewModel(
+      rema_Id: json['rema_Id'],
       alum_Id: json['alum_Id'],
       alumno: json['alumno'],
       repo_Descripcion: json['repo_Descripcion'],

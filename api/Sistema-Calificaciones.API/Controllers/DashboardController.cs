@@ -13,17 +13,13 @@ namespace Sistema_Calificaciones.API.Controllers
     public class DashboardController : Controller
     {
        
-       
             private readonly ReporteServices  _reporteServices;
             private readonly IMapper _mapper;
-            public DashboardController(ReporteServices reporteServices , IMapper mapper)
+         public DashboardController(ReporteServices reporteServices , IMapper mapper)
          {
             _reporteServices = reporteServices;
                 _mapper = mapper;
           }
-
-
-
 
         [HttpGet("AlumnosPorPadre/{id}")]
         public IActionResult alumnospadre(int id)
@@ -57,6 +53,14 @@ namespace Sistema_Calificaciones.API.Controllers
         {
 
             var list = _reporteServices.ReportesProfe(id);
+            return Json(list);
+        }
+
+        [HttpGet("ReportesFind/{id}")]
+        public IActionResult ReporteFind(int id)
+        {
+
+            var list = _reporteServices.ReportesFind(id);
             return Json(list);
         }
 

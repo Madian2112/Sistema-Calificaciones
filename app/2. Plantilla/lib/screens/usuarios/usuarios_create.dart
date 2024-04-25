@@ -16,15 +16,14 @@ class _CrearUsuarioViewState extends State<CrearUsuarioView> {
   List<Rol> _roles = [];
   int? _selectedRoleId;
   bool _isAdmin = false; 
-  String urlCrearUsuario = "http://www.reportecalificacionesalumno.somee.com/API/Usuario/CreateUsuarios";
-  String urlRoles = "http://www.reportecalificacionesalumno.somee.com/API/Usuario/ListadoRoles";
+  String urlCrearUsuario = "https://localhost:44348/API/Usuario/CreateUsuarios";
+  String urlRoles = "https://localhost:44348/API/Usuario/ListadoRoles";
 
   @override
   void initState() {
   super.initState();
   _fetchRoles();
 }
-
 
   Future<void> _fetchRoles() async {
     try {

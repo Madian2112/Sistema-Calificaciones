@@ -52,6 +52,9 @@ namespace Sistema_Calificaciones.Entities.Entities
         public string Role_Descripcion { get; set; }
 
         [NotMapped]
+        public string Email { get; set; }
+
+        [NotMapped]
         public string usua_creac { get; set; }
 
         [NotMapped]

@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:fl_chart/fl_chart.dart';
 import 'package:shop_app/models/ReportesViewModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shop_app/screens/alumnos/alumnoshome_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   static String routeName = "/dashboard";
@@ -46,7 +47,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     int? useridd = sharedPreferences.getInt('IdUsuario');
     print(useridd);
-    url = "http://www.reportecalificacionesalumno.somee.com/API/Dashboard/ReportesAlumno/${widget.alum_Id}"; // Construir la URL aquí
+    url = "https://localhost:44348/API/Dashboard/ReportesAlumno/${widget.alum_Id}"; // Construir la URL aquí
     final response = await http.get(Uri.parse(url));
     final Map<String, dynamic> responseData = json.decode(response.body);
     final List<dynamic> reportesData = responseData['data'];
@@ -69,11 +70,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
     });
 
     try {
-      final response1 = await http.get(Uri.parse('http://www.reportecalificacionesalumno.somee.com/API/Dashboard/CaliAlumno/${widget.alum_Id}'));
-      final response2 = await http.get(Uri.parse('http://www.reportecalificacionesalumno.somee.com/API/Dashboard/EstadocalificacionesAlumno/${widget.alum_Id}'));
-      final response3 = await http.get(Uri.parse('http://www.reportecalificacionesalumno.somee.com/API/Dashboard/EstadisticasReporte/${widget.alum_Id}'));
+      final response1 = await http.get(Uri.parse('https://localhost:44348/API/Dashboard/CaliAlumno/${widget.alum_Id}'));
+      final response2 = await http.get(Uri.parse('https://localhost:44348/API/Dashboard/EstadocalificacionesAlumno/${widget.alum_Id}'));
+      final response3 = await http.get(Uri.parse('https://localhost:44348/API/Dashboard/EstadisticasReporte/${widget.alum_Id}'));
       
-      final String calificaciones = 'http://www.reportecalificacionesalumno.somee.com/API/Dashboard/EstadocalificacionesAlumno/${widget.alum_Id}';
+      final String calificaciones = 'https://localhost:44348/API/Dashboard/EstadocalificacionesAlumno/${widget.alum_Id}';
       final result = await http.get(Uri.parse(calificaciones));
       if(result.statusCode == 200){
       final json = jsonDecode(result.body);
@@ -150,10 +151,12 @@ final List<Color> barColors = [
                       children: [
                         SizedBox(width: 20),
                         ..._reportes.map((reporte){
-                        return CustomCard(
-                          title: 'Reporte: ' + reporte.repo_Descripcion.toString(),
-                          subtitle: 'Materia: '+ reporte.mate_Descripcion.toString() + '\n'+
-                                    'Causa: ' + reporte.repo_Causa.toString(),
+                        return GestureDetector(
+                          onTap: (){ print('se presiono la carta'); },
+                          child: CustomCard(
+                            title: 'Reporte: ' + reporte.repo_Descripcion.toString(), 
+                            subtitle: 'Materia: '+ reporte.mate_Descripcion.toString() + '\n'+
+                                      'Causa: ' + reporte.repo_Causa.toString(),),
                         );
                         }).toList(),
                         SizedBox(width: 20),
@@ -341,7 +344,7 @@ class CustomCard extends StatelessWidget {
   final String title;
   final String subtitle;
 
-  CustomCard({required this.title, required this.subtitle});
+  CustomCard({required this.title, required this.subtitle });
 
   @override
   Widget build(BuildContext context) {

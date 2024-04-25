@@ -29,7 +29,7 @@ class _MyWidgetState extends State<WidgetAlumnos> {
     final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     int? useridd = sharedPreferences.getInt('IdUsuario');
     print(useridd);
-    url = "http://www.reportecalificacionesalumno.somee.com/API/Dashboard/AlumnosPorPadre/$useridd"; // Construir la URL aquí
+    url = "https://localhost:44348/API/Dashboard/AlumnosPorPadre/$useridd"; // Construir la URL aquí
     final response = await http.get(Uri.parse(url));
     final Map<String, dynamic> responseData = json.decode(response.body);
     final List<dynamic> alumnosData = responseData['data'];

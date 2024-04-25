@@ -91,6 +91,23 @@ namespace Sistema_Calificaciones.BusinessLogic.Services
             }
         }
 
+
+        public ServiceResult ReportesFind(int id)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _reporteRepository.ReportesFind(id);
+
+                return result.Ok(list);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex);
+            }
+        }
+
+
         public ServiceResult estadisticaReporte(int id)
         {
             var result = new ServiceResult();

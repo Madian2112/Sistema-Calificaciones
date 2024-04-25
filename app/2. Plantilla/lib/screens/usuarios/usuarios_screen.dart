@@ -66,7 +66,7 @@ class WidgetUsuario extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<WidgetUsuario> {
-  String url = "http://www.reportecalificacionesalumno.somee.com/API/Usuario/ListadoUsuarios";
+  String url = "https://localhost:44348/API/Usuario/ListadoUsuarios";
   List<UsuariosViewModel> _usuarios = [];
 
   @override
@@ -87,7 +87,7 @@ class _MyWidgetState extends State<WidgetUsuario> {
   }
 
   Future<void> _eliminarUsuario(int usua_Id) async {
-    final deleteUrl = "http://www.reportecalificacionesalumno.somee.com/API/Usuario/DeleteUsuarios?usua_Id=$usua_Id";
+    final deleteUrl = "https://localhost:44348/API/Usuario/DeleteUsuarios?usua_Id=$usua_Id";
     final response = await http.delete(Uri.parse(deleteUrl));
 
     if (response.statusCode == 200) {

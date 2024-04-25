@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
+using Sistema_Calificaciones.Common.Models;
 using Sistema_Calificaciones.Entities.Entities;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,6 @@ namespace Sistema_Calificaciones.DataAccess.Repository
 {
    public class ReporteRepository
     {
-
 
         public IEnumerable<tbCalificacionPorAlumno> List(int Alum_Id)
         {
@@ -44,8 +44,6 @@ namespace Sistema_Calificaciones.DataAccess.Repository
         }
 
 
-
-
         public IEnumerable<tbCalificacionPorAlumno> EstadoCalificacion(int Alum_Id)
         {
             string sql = ScriptsBaseDeDatos.estadocalificaciones;
@@ -60,12 +58,6 @@ namespace Sistema_Calificaciones.DataAccess.Repository
             }
         }
 
-
-
-
-
-
-
         public IEnumerable<tbReportesPorMaestros> Reporte(int Alum_Id)
         {
             string sql = ScriptsBaseDeDatos.Reportes;
@@ -79,6 +71,21 @@ namespace Sistema_Calificaciones.DataAccess.Repository
                 return result;
             }
         }
+
+        public IEnumerable<tbReportesPorMaestros> ReportesFind(int Rema_Id)
+        {
+            string sql = ScriptsBaseDeDatos.ReporteObtener;
+
+            List<tbReportesPorMaestros> result = new List<tbReportesPorMaestros>();
+
+            using (var db = new SqlConnection(Sistema_CalificacionesContex.ConnectionString))
+            {
+                var parameters = new { Rema_Id };
+                result = db.Query<tbReportesPorMaestros>(sql, parameters, commandType: CommandType.StoredProcedure).ToList();
+                return result;
+            }
+        }
+
         public IEnumerable<tbReportesPorMaestros> conteoreporte(int Alum_Id)
         {
             string sql = ScriptsBaseDeDatos.EstadisticaReportes;
