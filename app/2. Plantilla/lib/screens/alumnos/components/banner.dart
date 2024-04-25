@@ -15,16 +15,22 @@ class DiscountBanner extends StatelessWidget {
         vertical: 16,
       ),
       decoration: BoxDecoration(
-        color: const Color(0xFF4A3298),
+        color: Color.fromARGB(255, 0, 24, 112),
+        image: DecorationImage(
+             image: AssetImage("images/banner.png",),
+            fit: BoxFit.cover, 
+          ),
         borderRadius: BorderRadius.circular(20),
       ),
       child: const Text.rich(
         TextSpan(
           style: TextStyle(color: Colors.white),
           children: [
-            TextSpan(text: "Bienvenido\n"),
+                    
+
+            TextSpan(text: ""),
             TextSpan(
-              text: "A la pantalla de sus hijos",
+              text: "",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,

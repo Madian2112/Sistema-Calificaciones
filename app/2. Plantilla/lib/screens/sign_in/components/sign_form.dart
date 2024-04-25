@@ -168,7 +168,7 @@ class _SignFormState extends State<SignForm> {
               return null;
             },
             decoration: const InputDecoration(
-              labelText: "Contraseñia",
+              labelText: "Contraseña",
               hintText: "Ingrese su contraseñia",
               // If  you are using latest version of flutter then lable text and hint text shown like this
               // if you r using flutter less then 1.20.* then maybe this is not working properly
@@ -188,13 +188,13 @@ class _SignFormState extends State<SignForm> {
                   });
                 },
               ),
-              const Text("Remember me"),
+              const Text("Recordarme"),
               const Spacer(),
               GestureDetector(
                 onTap: () => Navigator.pushNamed(
                     context, ForgotPasswordScreen.routeName),
                 child: const Text(
-                  "Forgot Password",
+                  "Olvidaste tu contraseña",
                   style: TextStyle(decoration: TextDecoration.underline),
                 ),
               )
@@ -204,7 +204,7 @@ class _SignFormState extends State<SignForm> {
           const SizedBox(height: 16),
           ElevatedButton(
             onPressed: Login,
-            child: const Text("Continue"),
+            child: const Text("Iniciar"),
           ),
         ],
       ),

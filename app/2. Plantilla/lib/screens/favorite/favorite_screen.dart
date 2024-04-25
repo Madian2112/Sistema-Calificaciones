@@ -120,7 +120,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
       print('Error: $e');
     }
   }
-
+final List<Color> barColors = [
+  Colors.blue.withOpacity(0.5),
+  Colors.green.withOpacity(0.5),
+  Colors.orange.withOpacity(0.5),
+  Colors.purple.withOpacity(0.5),
+  Colors.yellow.withOpacity(0.5),
+  // Agrega más colores si tienes más materias
+];
   @override
   Widget build(BuildContext context) {
     return loading
@@ -194,81 +201,84 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                 
                   Expanded(
-                    child: Card(
-                      elevation: 3,
-                      color: Color.fromARGB(255, 241, 241, 241),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Text(
-                              'Calificaciones por Materia',
-                              style: Theme.of(context).textTheme.headline6?.copyWith(fontWeight: FontWeight.bold),
-                              textAlign: TextAlign.center,
-                            ),
-                            SizedBox(height: 24),
-                            Expanded(
-                              child: LineChart(
-                                LineChartData(
-                                  lineBarsData: [
-                                    LineChartBarData(
-                                      spots: subjects.asMap().entries.map((entry) {
-                                        final index = entry.key;
-                                        final String subject = entry.value;
-                                        final double grade = gradesBySubject[subject]!.toDouble();
-                                        return FlSpot(index.toDouble(), grade);
-                                      }).toList(),
-                                      isCurved: true,
-                                      colors: [Color.fromARGB(255, 1, 52, 95)],
-                                      barWidth: 4,
-                                      belowBarData: BarAreaData(show: false),
-                                      dotData: FlDotData(show: true),
-                                    ),
-                                  ],
-                                  titlesData: FlTitlesData(
-                                    leftTitles: SideTitles(
-                                      showTitles: true,
-                                      interval: 10, // Intervalo entre cada etiqueta
-                                      getTextStyles: (context, value) => const TextStyle(
-                                        color: Color.fromARGB(255, 5, 5, 5),
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14,
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.7,
+                      child: Card(
+                        elevation: 3,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Text(
+                                'Calificaciones por Materia',
+                                style: Theme.of(context).textTheme.headline6?.copyWith(fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(height: 24),
+                              Expanded(
+                                child: BarChart(
+                                  BarChartData(
+                                    barGroups: subjects.asMap().entries.map((entry) {
+                                      final index = entry.key.toDouble();
+                                      final String subject = entry.value;
+                                      final double grade = gradesBySubject[subject]!.toDouble();
+                                      return BarChartGroupData(
+                                        x: index.toInt(),
+                                        barRods: [
+                                          BarChartRodData(
+                                            y: grade,
+                                            colors: [barColors[index.toInt() % barColors.length]], // Color según el índice
+                                            width: 20, // Ancho de cada barra
+                                          ),
+                                        ],
+                                      );
+                                    }).toList(),
+                                    titlesData: FlTitlesData(
+                                      leftTitles: SideTitles(
+                                        showTitles: true,
+                                        getTextStyles: (context, value) => const TextStyle(
+                                          color: Color.fromARGB(255, 5, 5, 5),
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12, // Tamaño de la letra en el eje y
+                                        ),
+                                        margin: 20,
+                                        reservedSize: 30,
+                                        interval: 20, // Incremento del eje y
+                                        getTitles: (value) {
+                                          return value.toInt().toString();
+                                        },
                                       ),
-                                      margin: 20,
-                                      reservedSize: 28, // Espacio para mostrar la última etiqueta completamente
-                                    ),
-                                    bottomTitles: SideTitles(
-                                      showTitles: true,
-                                      getTextStyles: (context, value) => const TextStyle(
-                                        color: Color.fromARGB(255, 5, 5, 5),
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14,
+                                      bottomTitles: SideTitles(
+                                        showTitles: true,
+                                        getTextStyles: (context, value) => const TextStyle(
+                                          color: Color.fromARGB(255, 5, 5, 5),
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 10, // Tamaño de la letra en el eje x
+                                        ),
+                                        getTitles: (value) {
+                                          final int index = value.toInt();
+                                          if (index >= 0 && index < subjects.length) {
+                                            return subjects[index];
+                                          }
+                                          return '';
+                                        },
                                       ),
-                                      margin: 20,
-                                      getTitles: (double value) {
-                                        final int index = value.toInt();
-                                        if (index >= 0 && index < subjects.length) {
-                                          return subjects[index];
-                                        }
-                                        return '';
-                                      },
                                     ),
+                                    gridData: FlGridData(show: false),
+                                    borderData: FlBorderData(show: false),
+                                    minY: 0,
+                                    maxY: 100, // Suponiendo que las calificaciones están entre 0 y 100
                                   ),
-                                  gridData: FlGridData(show: true),
-                                  borderData: FlBorderData(show: true),
-                                  minX: 0,
-                                  maxX: subjects.length.toDouble() - 1,
-                                  minY: 0,
-                                  maxY: 100,
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),

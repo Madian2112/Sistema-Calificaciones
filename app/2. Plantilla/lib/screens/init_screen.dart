@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop_app/screens/alumnos/alumnoshome_screen.dart';
-import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/screens/profile/profile_screen.dart';
 import 'package:shop_app/screens/tables/tableshome_screen.dart';
 
@@ -51,30 +50,12 @@ class _InitScreenState extends State<InitScreen> {
         }
         final bool isAdmin = snapshot.data ?? false;
         final List<Widget> pages = [
-          const HomeScreen(),
+          if (isAdmin) const TablesScreen(), const AlumnosScreen(),const ProfileScreen(),
           const AlumnosScreen(),
-          if (isAdmin) const TablesScreen(),
           const ProfileScreen(),
         ];
 
         final List<BottomNavigationBarItem> bottomNavBarItems = [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              "assets/icons/Shop Icon.svg",
-              colorFilter: const ColorFilter.mode(
-                inActiveIconColor,
-                BlendMode.srcIn,
-              ),
-            ),
-            activeIcon: SvgPicture.asset(
-              "assets/icons/Shop Icon.svg",
-              colorFilter: const ColorFilter.mode(
-                kPrimaryColor,
-                BlendMode.srcIn,
-              ),
-            ),
-            label: "Home",
-          ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               "assets/icons/Heart Icon.svg",

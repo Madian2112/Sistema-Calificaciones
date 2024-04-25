@@ -25,21 +25,21 @@ class ProfileScreen extends StatelessWidget {
               icon: "assets/icons/User Icon.svg",
               press: () => {},
             ),
-            ProfileMenu(
-              text: "Notificaciones",
-              icon: "assets/icons/Bell.svg",
-              press: () {},
-            ),
-            ProfileMenu(
-              text: "Ajustes",
-              icon: "assets/icons/Settings.svg",
-              press: () {},
-            ),
-            ProfileMenu(
-              text: "Help Center",
-              icon: "assets/icons/Question mark.svg",
-              press: () {},
-            ),
+            // ProfileMenu(
+            //   text: "Notificaciones",
+            //   icon: "assets/icons/Bell.svg",
+            //   press: () {},
+            // ),
+            // ProfileMenu(
+            //   text: "Ajustes",
+            //   icon: "assets/icons/Settings.svg",
+            //   press: () {},
+            // ),
+            // ProfileMenu(
+            //   text: "Help Center",
+            //   icon: "assets/icons/Question mark.svg",
+            //   press: () {},
+            // ),
             ProfileMenu(
               text: "Cerrar Sesion",
               icon: "assets/icons/Log out.svg",
