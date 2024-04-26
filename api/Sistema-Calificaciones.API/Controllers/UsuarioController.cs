@@ -65,7 +65,6 @@ namespace Sistema_Calificaciones.API.Controllers
         }
 
         [HttpGet("FillUsuarios")]
-
         public IActionResult Llenar(int id)
         {
 
@@ -99,13 +98,19 @@ namespace Sistema_Calificaciones.API.Controllers
             return Ok(list);
         }
 
-
-
-
         [HttpPost("RestablecerUsuarios")]
-        public IActionResult Restablecer(int Usua_Id, string Usua_Clave, int usuario, DateTime fecha)
+        public IActionResult Restablecer(int Usua_Id, string Usua_Clave, int usuario)
         {
+            DateTime fecha = DateTime.Now;
             var list = _accesoServices.Restablecer(Usua_Id, Usua_Clave, usuario, fecha);
+            return Ok(list);
+        }
+
+        [HttpGet("VerificarCodigo")]
+        public IActionResult VerificarCodigo(string usuario, string codigo)
+        {
+
+            var list = _accesoServices.VerificarCodigo(usuario, codigo);
             return Ok(list);
         }
 

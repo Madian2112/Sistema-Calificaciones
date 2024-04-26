@@ -18,9 +18,9 @@ class _EditarUsuarioViewState extends State<EditarUsuarioView> {
   int? _selectedRoleId;
   bool _esAdministrador = false;
   List<Rol> _roles = [];
-  String urlUsuario = "https://localhost:44348/API/Usuario/FillUsuarios";
-  String urlActualizarUsuario = "https://localhost:44348/API/Usuario/UpdateUsuarios";
-  String urlRoles = "https://localhost:44348/API/Usuario/ListadoRoles";
+  String urlUsuario = "http://www.reportecalificacionesalumno.somee.com/API/Usuario/FillUsuarios";
+  String urlActualizarUsuario = "http://www.reportecalificacionesalumno.somee.com/API/Usuario/UpdateUsuarios";
+  String urlRoles = "http://www.reportecalificacionesalumno.somee.com/API/Usuario/ListadoRoles";
 
   @override
   void initState() {

@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:shop_app/screens/calificaciones/calificaciones_screen.dart';
 import 'package:shop_app/screens/products/products_screen.dart';
 
 import 'screens/cart/cart_screen.dart';
@@ -14,7 +15,7 @@ import 'screens/sign_in/sign_in_screen.dart';
 import 'screens/sign_up/sign_up_screen.dart';
 import 'screens/splash/splash_screen.dart';
 import 'screens/usuarios/usuarios_screen.dart';
-import 'screens/favorite/favorite_screen.dart';
+import 'screens/reportes/reportes_screen.dart';
 import 'screens/alumnos/components/alumos_name.dart';
 
 // We use name route
@@ -33,6 +34,8 @@ final Map<String, WidgetBuilder> routes = {
   DetailsScreen.routeName: (context) => const DetailsScreen(),
   WidgetUsuario.routeName: (context) => const WidgetUsuario(),
   WidgetAlumnos.routeName: (context) => const WidgetAlumnos(),
+  CalificacionesScreen.routeName: (context) => const CalificacionesScreen(),
   CartScreen.routeName: (context) => const CartScreen(),
+  ReportesScreen.routeName: (context) => const ReportesScreen(),
   ProfileScreen.routeName: (context) => const ProfileScreen(),
 };

@@ -55,6 +55,9 @@ namespace Sistema_Calificaciones.Entities.Entities
         public string Email { get; set; }
 
         [NotMapped]
+        public string Codigo { get; set; }
+
+        [NotMapped]
         public string usua_creac { get; set; }
 
         [NotMapped]

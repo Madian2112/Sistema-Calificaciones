@@ -33,7 +33,7 @@ class _SignFormState extends State<SignForm> {
   }
 
   Future<dynamic> Login() async{
-    final String url = "https://localhost:44348/API/Usuario/LoginHome?Usuario="+username.text+"&Contra="+contraname.text;
+    final String url = "http://www.reportecalificacionesalumno.somee.com/API/Usuario/LoginHome?Usuario="+username.text+"&Contra="+contraname.text;
     final result = await http.get(Uri.parse(url));
     final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
 

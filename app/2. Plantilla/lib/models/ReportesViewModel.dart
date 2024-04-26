@@ -5,6 +5,8 @@ class ReportesViewModel {
   String? repo_Descripcion;
   String? repo_Causa;
   String? mate_Descripcion;
+  
+
 
   ReportesViewModel({
     required this.rema_Id,

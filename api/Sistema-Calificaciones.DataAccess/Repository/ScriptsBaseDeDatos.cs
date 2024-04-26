@@ -18,8 +18,8 @@ namespace Sistema_Calificaciones.DataAccess.Repository
         public static string Usua_Eliminar = "[Acce].[sp_Usuarios_eliminar]";
         public static string Usua_Actualizar = "[Acce].[sp_Usuarios_editar]";
         public static string Usua_Restablecer = "[Acce].[sp_Usuarios_restablecer]";
-        public static string Usua_Restablecer_Contra = "[Acce].[sp_Usuarios_codigocontra]";
-
+        public static string Usua_Restablecer_EnviarCodigo = "[Acce].[sp_Usuarios_codigocontra]";
+        public static string Usua_Restablecer_VeirificarCodigo = "[Acce].[sp_Usuarios_VerificarCodigo]";
         #endregion
 
         #region Rol

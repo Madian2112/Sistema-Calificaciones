@@ -143,6 +143,33 @@ namespace Sistema_Calificaciones.DataAccess.Repository
             }
         }
 
+        public IEnumerable<tbUsuarios> EnviarCodigo(string Usua_Usuario)
+        {
+            string sql = ScriptsBaseDeDatos.Usua_Restablecer_EnviarCodigo;
+
+            List<tbUsuarios> result = new List<tbUsuarios>();
+
+            using (var db = new SqlConnection(Sistema_CalificacionesContex.ConnectionString))
+            {
+                var parameters = new { Usua_Usuario };
+                result = db.Query<tbUsuarios>(sql, parameters, commandType: CommandType.StoredProcedure).ToList();
+                return result;
+            }
+        }
+
+        public IEnumerable<tbUsuarios> VerificarCodigo(string Usua_Usuario, string Usua_Codigo)
+        {
+            string sql = ScriptsBaseDeDatos.Usua_Restablecer_VeirificarCodigo;
+
+            List<tbUsuarios> result = new List<tbUsuarios>();
+
+            using (var db = new SqlConnection(Sistema_CalificacionesContex.ConnectionString))
+            {
+                var parameters = new { Usua_Usuario, Usua_Codigo };
+                result = db.Query<tbUsuarios>(sql, parameters, commandType: CommandType.StoredProcedure).ToList();
+                return result;
+            }
+        }
 
         public RequestStatus EliminarUsuarios(int usua_Id, int usuario, DateTime fecha)
         {

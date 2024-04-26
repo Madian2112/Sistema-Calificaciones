@@ -1,18 +1,18 @@
 class AlumnosViewModel {
   int? paAl_Id;
   int alum_Id;
-  int padr_Id;
+  int? padr_Id;
   String? nombre_Padre;
   String? nombre_Alumno;
   String? curso;
 
   AlumnosViewModel({
-    required this.paAl_Id,
-    required this.padr_Id,
-    required this.nombre_Padre,
-    required this.nombre_Alumno,
-    required this.alum_Id,
-    required this.curso,
+     this.paAl_Id,
+     this.padr_Id,
+     this.nombre_Padre,
+     this.nombre_Alumno,
+     required this.alum_Id,
+     this.curso,
     /*this.rolesDescripcion,*/
   });
 

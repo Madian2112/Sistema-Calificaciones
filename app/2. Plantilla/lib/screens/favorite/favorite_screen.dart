@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:fl_chart/fl_chart.dart';
 import 'package:shop_app/models/ReportesViewModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shop_app/screens/alumnos/alumnoshome_screen.dart';
+import 'package:shop_app/screens/reportes/components/card.dart';
 
 class DashboardScreen extends StatefulWidget {
   static String routeName = "/dashboard";
@@ -152,7 +152,11 @@ final List<Color> barColors = [
                         SizedBox(width: 20),
                         ..._reportes.map((reporte){
                         return GestureDetector(
-                          onTap: (){ print('se presiono la carta'); },
+                          onTap: (){ 
+                            print('se presiono la carta'); 
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => RunningRScreen(rema_Id: reporte.rema_Id)));
+
+                            },
                           child: CustomCard(
                             title: 'Reporte: ' + reporte.repo_Descripcion.toString(), 
                             subtitle: 'Materia: '+ reporte.mate_Descripcion.toString() + '\n'+

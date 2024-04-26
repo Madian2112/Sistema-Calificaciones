@@ -66,9 +66,6 @@ namespace Sistema_Calificaciones.BusinessLogic.Services
             }
         }
 
-
-
-
         public ServiceResult InsertarUsuarios(tbUsuarios item)
         {
             var result = new ServiceResult();
@@ -106,7 +103,35 @@ namespace Sistema_Calificaciones.BusinessLogic.Services
             }
         }
 
+        public ServiceResult EnviarCodigo(string usuario)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _usuarioRepository.EnviarCodigo(usuario);
 
+                return result.Ok(list);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex);
+            }
+        }
+
+        public ServiceResult VerificarCodigo(string usuario, string codigo)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _usuarioRepository.VerificarCodigo(usuario, codigo);
+
+                return result.Ok(list);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex);
+            }
+        }
 
         public ServiceResult EliminarUsuarios(int usua_Id, int usuario, DateTime fecha)
         {

@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop_app/models/AlumnosViewModel.dart';
 import 'package:shop_app/components/componente1.dart';
+import 'package:shop_app/screens/calificaciones/components/card.dart';
 
 class WidgetAlumnos extends StatefulWidget {
   const WidgetAlumnos({Key? key});
@@ -29,7 +30,7 @@ class _MyWidgetState extends State<WidgetAlumnos> {
     final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     int? useridd = sharedPreferences.getInt('IdUsuario');
     print(useridd);
-    url = "https://localhost:44348/API/Dashboard/AlumnosPorPadre/$useridd"; // Construir la URL aquí
+    url = "http://www.reportecalificacionesalumno.somee.com/API/Dashboard/AlumnosPorPadre/$useridd"; // Construir la URL aquí
     final response = await http.get(Uri.parse(url));
     final Map<String, dynamic> responseData = json.decode(response.body);
     final List<dynamic> alumnosData = responseData['data'];
@@ -251,6 +252,7 @@ Widget build(BuildContext context) {
                                     child: GestureDetector(
                                       onTap: () {
                                         print('Icono presionado');
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => RunningCScreen(alum_Id: alumno.alum_Id)));
                                       },
                                       child: Icon(
                                         Icons.assignment,
